@@ -169,15 +169,14 @@ raw文字列は、バックスラッシュ(\)がエスケープ文字として�
 先頭に0を付けるだけでは8進数を表現できない点に注意してください。
 
 
-The var statement
-=================
-The var statement declares a new local or global variable:
+var文
+=====
+varステートメントは、新しいローカル変数またはグローバル変数を宣言します。
 
 .. code-block::
-  var x, y: int # declares x and y to have the type ``int``
+  var x, y: int # xとyを ``int`` 型で宣言
 
-Indentation can be used after the ``var`` keyword to list a whole section of
-variables:
+次に示すように ``var`` キーワードの後にインデントを入れることで、ひとまとまりに変数を宣言することが出来ます。
 
 .. code-block::
     :test: "nim c $1"
