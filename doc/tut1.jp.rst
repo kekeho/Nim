@@ -160,15 +160,14 @@ raw文字列は、バックスラッシュ(\)がエスケープ文字として�
         yes("くだらない質問をしてもいいかい?") """
 
 
-Numbers
+数値
 -------
 
-Numerical literals are written as in most other languages. As a special twist,
-underscores are allowed for better readability: ``1_000_000`` (one million).
-A number that contains a dot (or 'e' or 'E') is a floating point literal:
-``1.0e9`` (one billion). Hexadecimal literals are prefixed with ``0x``,
-binary literals with ``0b`` and octal literals with ``0o``. A leading zero
-alone does not produce an octal.
+数値リテラルは他のほとんどの言語と同じように記述できます。 
+特別な工夫として、次のように可読性を上げるためにアンダーラインを用いることが出来ます: ``1_000_000`` (one million).
+ドットや 'e' または 'E'を含む数値は浮動小数点(float)型として扱われます。 ``1.0e9`` は10億を表します。
+16進数は ``0x`` を、2進数は ``0b`` を、8進数は ``0o`` を先頭に付けることで表現できます。
+先頭に0を付けるだけでは8進数を表現できない点に注意してください。
 
 
 The var statement
