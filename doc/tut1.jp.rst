@@ -217,27 +217,25 @@ varステートメントは、新しいローカル変数またはグローバ�
 バグをなくすために、まとめて代入を行う際には、副作用のないプロシージャーを使いましょう。
 
 
-Constants
-=========
+定数
+====
 
-Constants are symbols which are bound to a value. The constant's value
-cannot change. The compiler must be able to evaluate the expression in a
-constant declaration at compile time:
+定数は、値と識別子を強く結びつけるものです。 定数は一度定義したら変更は不可能です。
+コンパイラは、コンパイル時に定数宣言中の式を評価して値を決定する必要があります。
 
 .. code-block:: nim
     :test: "nim c $1"
-  const x = "abc" # the constant x contains the string "abc"
+  const x = "abc" # 定数xは文字列"abc"を含む
 
-Indentation can be used after the ``const`` keyword to list a whole section of
-constants:
+``const`` キーワードの後にインデントを使って、定数をまとめて宣言できます。
 
 .. code-block::
     :test: "nim c $1"
   const
     x = 1
-    # a comment can occur here too
+    # ここにもコメント書けます
     y = 2
-    z = y + 5 # computations are possible
+    z = y + 5 # インデントの中の時点で既に計算が可能です
 
 
 The let statement
