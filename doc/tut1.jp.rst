@@ -186,35 +186,35 @@ varステートメントは、新しいローカル変数またはグローバ�
     a, b, c: string
 
 
-The assignment statement
-========================
+代入文
+======
 
-The assignment statement assigns a new value to a variable or more generally
-to a storage location:
+代入文は、新たに変数やメモリ領域に値を代入します。
 
 .. code-block::
-  var x = "abc" # introduces a new variable `x` and assigns a value to it
-  x = "xyz"     # assigns a new value to `x`
+  var x = "abc" # 新たに変数 `x` を宣言し、値を代入する
+  x = "xyz"     # `x` に新たな値を代入する
 
-``=`` is the *assignment operator*. The assignment operator can be
-overloaded. You can declare multiple variables with a single assignment
-statement and all the variables will have the same value:
+``=`` は *代入演算子* です。
+代入演算子はオーバーロードが可能です。
+
+次に示すように、一つの代入演算子で複数の変数に値を代入することが可能です。
+その場合、複数の変数に同じ値が代入されます。
 
 .. code-block::
     :test: "nim c $1"
-  var x, y = 3  # assigns 3 to the variables `x` and `y`
-  echo "x ", x  # outputs "x 3"
-  echo "y ", y  # outputs "y 3"
-  x = 42        # changes `x` to 42 without changing `y`
-  echo "x ", x  # outputs "x 42"
-  echo "y ", y  # outputs "y 3"
+  var x, y = 3  # 変数 `x` と `y` それぞれに同時に3を代入
+  echo "x ", x  # "x 3" と出力
+  echo "y ", y  # "y 3" と出力
+  x = 42        # `y` は変更せず、 `x` のみ42に変更
+  echo "x ", x  # "x 42" と出力
+  echo "y ", y  # "y 3" と出力
 
-Note that declaring multiple variables with a single assignment which calls a
-procedure can have unexpected results: the compiler will *unroll* the
-assignments and end up calling the procedure several times. If the result of
-the procedure depends on side effects, your variables may end up having
-different values! For safety use side-effect free procedures if making multiple
-assignments.
+
+複数の変数を宣言し、一度にまとめて代入する際に、 変数によってプロシージャーが呼び出されると思わぬ動作をするかもしれないことは気に留めておいてください。
+コンパイラはまとめた代入文を *展開します* 。 つまり、一度にまとめたように見えてもプロシージャーを複数回呼び出すことになります。
+もしプロシージャーの戻り値に副作用がある場合、変数に意図したものとは別の値が入ってしまう可能性もあります。
+バグをなくすために、まとめて代入を行う際には、副作用のないプロシージャーを使いましょう。
 
 
 Constants
