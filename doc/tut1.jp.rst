@@ -238,26 +238,26 @@ varステートメントは、新しいローカル変数またはグローバ�
     z = y + 5 # インデントの中の時点で既に計算が可能です
 
 
-The let statement
-=================
-The ``let`` statement works like the ``var`` statement but the declared
-symbols are *single assignment* variables: After the initialization their
-value cannot change:
+let文
+=====
+``let`` 文 は ``var`` 文と似たような動きをしますが、 
+宣言されたシンボルは *単一代入* 変数となります。
+初期化された後は、値を変更することはできません。
 
 .. code-block::
-  let x = "abc" # introduces a new variable `x` and binds a value to it
-  x = "xyz"     # Illegal: assignment to `x`
+  let x = "abc" # 新たな変数 `x` を宣言し、値を結びつける
+  x = "xyz"     # エラー: `x` へ代入することはできません。
 
-The difference between ``let`` and ``const`` is: ``let`` introduces a variable
-that can not be re-assigned, ``const`` means "enforce compile time evaluation
-and put it into a data section":
+``let`` と ``const`` の違いは、一体何でしょう。
+``let`` はただの一度代入したら再代入できない変数で、 ``const`` はコンパイル時に強制的に計算され、データ領域に格納しておくものです。
+つまり、``const`` はコンパイル時に値が決定できなければならないのです。
 
 .. code-block::
-  const input = readLine(stdin) # Error: constant expression expected
+  const input = readLine(stdin) # エラー: 実行時ではなく、コンパイル時に値が定まる式である必要があります
 
 .. code-block::
     :test: "nim c $1"
-  let input = readLine(stdin)   # works
+  let input = readLine(stdin)   # こっちは動きますよ
 
 
 Control flow statements
