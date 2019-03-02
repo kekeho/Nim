@@ -350,23 +350,23 @@ elseがついているcase文なら、
 コンパイラがチェックするのに役立ちます。
 
 
-While statement
----------------
+while文
+-------
 
-The while statement is a simple looping construct:
+while文はシンプルなループ構文です。
 
 .. code-block:: nim
     :test: "nim c $1"
 
-  echo "What's your name? "
+  echo "そなた、名をなんという?"
   var name = readLine(stdin)
   while name == "":
-    echo "Please tell me your name: "
+    echo "え〜、名前を教えてくださいよ"
     name = readLine(stdin)
-    # no ``var``, because we do not declare a new variable here
+    # 新しい変数を宣言しておらず既存のnameに代入しているため ``var`` は要らない。
 
-The example uses a while loop to keep asking the users for their name, as long
-as the user types in nothing (only presses RETURN).
+この例では、ユーザーが名前を入力しない(Enterキー、MacならRETURNキーを押す)場合、
+1文字以上入力するまで名前を聞き続けるためにwhileループを使っている。
 
 
 For statement
