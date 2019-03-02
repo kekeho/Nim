@@ -267,84 +267,87 @@ let文
 最も原始的なプログラムは、条件分岐とループを用いて作ることができます。
 
 
-If statement
-------------
+if文
+----
 
-The if statement is one way to branch the control flow:
+if文を使えば、プログラムの流れを分岐させることができます。
 
 .. code-block:: nim
     :test: "nim c $1"
   let name = readLine(stdin)
   if name == "":
-    echo "Poor soul, you lost your name?"
+    echo "哀れな。 名無しなのかい?"
   elif name == "name":
-    echo "Very funny, your name is name."
+    echo "ウケる、 君の名前は「name」なのかいww"
   else:
-    echo "Hi, ", name, "!"
+    echo "やあ、", name, "!"
 
-There can be zero or more ``elif`` parts, and the ``else`` part is optional.
-The keyword ``elif`` is short for ``else if``, and is useful to avoid
-excessive indentation. (The ``""`` is the empty string. It contains no
-characters.)
+0以上の ``elif`` 文, そして ``else`` 文をオプションで書くことができます。
+``elif`` キーワードは ``else if`` の略で、過度のインデントを避けるのに便利です。
+( ``""`` は空の文字列で、文字が何もないことを表します)
 
 
-Case statement
---------------
+case文
+------
 
-Another way to branch is provided by the case statement. A case statement is
-a multi-branch:
+分岐の他の方法は、case文として提供されています。
+case文は次のように複数の分岐を作ることができます。
 
 .. code-block:: nim
     :test: "nim c $1"
   let name = readLine(stdin)
   case name
   of "":
-    echo "Poor soul, you lost your name?"
+    echo "哀れな。 名無しなのかい?"
   of "name":
-    echo "Very funny, your name is name."
+    echo "ウケる、 君の名前は「name」なのかいww"
   of "Dave", "Frank":
-    echo "Cool name!"
+    echo "いい名前だね!"
   else:
-    echo "Hi, ", name, "!"
+    echo "やあ、", name, "!"
 
-As it can be seen, for an ``of`` branch a comma separated list of values is also
-allowed.
+見ての通り、 ``of`` にカンマ区切りで値を並べることで、
+複数の条件にマッチさせることもできます。
 
-The case statement can deal with integers, other ordinal types and strings.
-(What an ordinal type is will be explained soon.)
-For integers or other ordinal types value ranges are also possible:
+case文は整数型、順序型、文字列型を扱ることができます。
+(順序型とはなんでしょう、これについては後で説明します。)
+整数型と他の順序型については、範囲を扱うことも可能です。
 
 .. code-block:: nim
-  # this statement will be explained later:
+  # ↓この行はあとで説明します
   from strutils import parseInt
 
-  echo "A number please: "
+  echo "数字を入力してください: "
   let n = parseInt(readLine(stdin))
   case n
-  of 0..2, 4..7: echo "The number is in the set: {0, 1, 2, 4, 5, 6, 7}"
-  of 3, 8: echo "The number is 3 or 8"
+  of 0..2, 4..7: echo "入力した数字は次の集合の中にありますね: {0, 1, 2, 4, 5, 6, 7}"
+  of 3, 8: echo "入力した数字は3か8ですね"
 
-However, the above code does not compile: the reason is that you have to cover
-every value that ``n`` may contain, but the code only handles the values
-``0..8``. Since it is not very practical to list every other possible integer
-(though it is possible thanks to the range notation), we fix this by telling
-the compiler that for every other value nothing should be done:
+実は、上記のコードはコンパイルが通らないのです。 
+なぜなら、nに入る可能性のあるすべての数字をカバーせねばならないのに、
+このコードだと ``0..8`` の範囲しか扱っていないからです。
+可能性のあるすべての数字を地道に書いていくことは現実的ではないでしょう
+(範囲指定の方法では可能ではありますが)。
+そのためコンパイラに、他の値が来た場合は特に何もしないということを
+伝えてあげなければなりません。
 
 .. code-block:: nim
   ...
   case n
-  of 0..2, 4..7: echo "The number is in the set: {0, 1, 2, 4, 5, 6, 7}"
-  of 3, 8: echo "The number is 3 or 8"
+  of 0..2, 4..7: echo "入力した数字は次の集合の中にありますね: {0, 1, 2, 4, 5, 6, 7}"
+  of 3, 8: echo "入力した数字は3か8ですね"
   else: discard
 
-The empty `discard statement`_ is a *do nothing* statement. The compiler knows
-that a case statement with an else part cannot fail and thus the error
-disappears. Note that it is impossible to cover all possible string values:
-that is why string cases always need an ``else`` branch.
+単独の `discard文`_ は *何もするな* と言う意味の文です。
+elseがついているcase文なら、
+想定以外の値を受け取っても対処できるとコンパイラがわかるので、
+今度はコンパイルエラーは消え去ります。
+数字も現実的ではありませんが、すべての文字列型を列挙することは不可能だと覚えておいてください。
+そういうわけで、case文には必ず ``else`` が必要なのです。
 
-In general the case statement is used for subrange types or enumerations where
-it is of great help that the compiler checks that you covered any possible
-value.
+一般的に、case文は部分範囲型や列挙型で使われます。
+これらの型の場合、取りうる値をすべてカバーしているか
+コンパイラがチェックするのに役立ちます。
 
 
 While statement
