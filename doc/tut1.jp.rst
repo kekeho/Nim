@@ -260,12 +260,11 @@ let文
   let input = readLine(stdin)   # こっちは動きますよ
 
 
-Control flow statements
-=======================
+制御文
+======
 
-The greetings program consists of 3 statements that are executed sequentially.
-Only the most primitive programs can get away with that: branching and looping
-are needed too.
+3つの順番に実行される文からなる、あいさつプログラムを作ってみましょう。
+最も原始的なプログラムは、条件分岐とループを用いて作ることができます。
 
 
 If statement
